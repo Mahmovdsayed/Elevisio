@@ -2,6 +2,7 @@ import ContainerLayout from "@/components/Layout/ContainerLayout";
 import OtpVerify from "@/components/OTP/OtpVerify";
 import TextHeader from "@/components/Ui/TextHeader";
 import { content } from "@/content/Content";
+import { Suspense } from "react";
 
 const page = () => {
     return <>
@@ -10,7 +11,9 @@ const page = () => {
                 title={content.verifyPage.title}
                 description={content.verifyPage.description}
             />
-            <OtpVerify />
+            <Suspense fallback={<div>Loading...</div>}>
+                <OtpVerify />
+            </Suspense>
         </ContainerLayout>
     </>;
 };
