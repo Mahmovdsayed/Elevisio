@@ -16,6 +16,7 @@ const OtpVerify = () => {
     const searchParams = useSearchParams();
     const email = searchParams.get("email") as string;
     const [loading, setLoading] = useState(false);
+    const [reloading, setreLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -43,17 +44,17 @@ const OtpVerify = () => {
     }
 
     const resendOTP = async () => {
-        setLoading(true);
+        setreLoading(true);
         const res = await requestNewOTP(email)
         if (res.success) {
-            setLoading(false)
+            setreLoading(false)
             AddToast(
                 res.message,
                 5000,
                 "success"
             )
         } else {
-            setLoading(false)
+            setreLoading(false)
             AddToast(
                 res.message,
                 5000,
@@ -86,6 +87,8 @@ const OtpVerify = () => {
                         <Button
                             radius="full"
                             variant="flat"
+                            isLoading={loading}
+                            disabled={loading}
                             className="w-full "
                             startContent={<MdVerified />}
                             type="submit"
@@ -99,6 +102,8 @@ const OtpVerify = () => {
                             variant="bordered"
                             className="w-full md:bg-transparent  p-0"
                             type="button"
+                            isLoading={reloading}
+                            disabled={reloading}
                             onPress={() => resendOTP()}
                             startContent={<MdRefresh />}
                         >
