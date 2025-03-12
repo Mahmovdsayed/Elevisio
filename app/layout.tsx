@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Lexend_Deca } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/providers/Providers";
 import { content } from "@/content/Content";
+import { Analytics } from "@vercel/analytics/react"
 
 const GetLexendDeca = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${GetLexendDeca.variable}  antialiased`}
       >
         <Providers>
+          <Analytics />
           {children}
         </Providers>
       </body>
