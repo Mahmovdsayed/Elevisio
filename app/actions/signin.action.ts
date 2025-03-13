@@ -31,7 +31,7 @@ export async function signInUser(formData: FormData) {
     if (!isEmailExist.isVerified)
       return await errResponse("Please verify your email first");
 
-    const isPassMatched = verifyPassword(
+    const isPassMatched = await verifyPassword(
       userData.password,
       isEmailExist.password
     );
@@ -52,9 +52,7 @@ export async function signInUser(formData: FormData) {
     //   path: "/",
     //   expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     // });
-    return await successResponse(
-      `Welcome back ${isEmailExist.userName} 👋`
-    );
+    return await successResponse(`Welcome back ${isEmailExist.userName} 👋`);
   } catch (error) {
     return await errResponse("Something went wrong");
   }

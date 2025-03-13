@@ -25,7 +25,7 @@ export async function resetPassword(formData: FormData) {
 
     if (!user) return await errResponse("Invalid or expired token");
 
-    user.password = hashPassword(data.password as string);
+    user.password = await hashPassword(data.password as string);
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
     await user.save();
