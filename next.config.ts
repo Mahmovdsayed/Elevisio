@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  reactStrictMode: true,
-  productionBrowserSourceMaps: true,
+  output: process.env.NODE_ENV === "production" ? "export" : "standalone",
+  reactStrictMode: process.env.NODE_ENV !== "production",
+  productionBrowserSourceMaps: process.env.NODE_ENV !== "production",
   compress: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
