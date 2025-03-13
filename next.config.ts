@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: process.env.NODE_ENV === "production" ? "export" : "standalone",
+  output: "standalone",
   reactStrictMode: process.env.NODE_ENV !== "production",
   productionBrowserSourceMaps: process.env.NODE_ENV !== "production",
   compress: true,
@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
 
   experimental: {
     turbo: {
-      sourceMaps: true,
       minify: true,
       treeShaking: true,
     },
