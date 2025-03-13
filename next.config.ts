@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
     },
     serverActions: {
       allowedOrigins: ["http://localhost:3000", "https://www.elevisio.online/"],
-      bodySizeLimit: "10mb",
     },
   },
 };
