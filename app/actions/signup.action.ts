@@ -5,24 +5,16 @@ import { connectToDatabase } from "@/lib/dbConnection";
 import sendEmailService from "@/lib/email";
 import { generateOTP, sendOTPEmail } from "@/lib/sendOTPEmail";
 import { signUpValidationSchema } from "@/Validation/SignUpValidation";
-import {
-  errResponse,
-  hashPassword,
-  successResponse,
-  uploadImageToCloudinary,
-} from "@/Helpers/helpers";
+import { errResponse, hashPassword, successResponse } from "@/Helpers/helpers";
 
 export async function signUpUser(formData: FormData) {
   try {
     await connectToDatabase();
 
     const userData = {
-      firstName: formData.get("firstName") as string,
-      secondName: formData.get("secondName") as string,
       userName: formData.get("userName") as string,
       email: formData.get("email") as string,
       password: formData.get("password") as string,
-      image: formData.get("image") as File | null,
     };
 
     try {
@@ -46,25 +38,6 @@ export async function signUpUser(formData: FormData) {
     let imageUrl =
       "https://res.cloudinary.com/dxvpvtcbg/image/upload/v1713493679/sqlpxs561zd9oretxkki.jpg";
     let publicId = "";
-
-    if (
-      userData.image &&
-      userData.image instanceof File &&
-      userData.image.size > 0
-    ) {
-      try {
-        const { imageUrl: uploadedImageUrl, publicId: uploadedPublicId } =
-          await uploadImageToCloudinary(
-            userData.image,
-            userData.userName,
-            "Avatar"
-          );
-        imageUrl = uploadedImageUrl;
-        publicId = uploadedPublicId;
-      } catch (uploadError) {
-        return await errResponse("Image upload failed. Please try again.");
-      }
-    }
 
     const newUser = new User({
       ...userData,

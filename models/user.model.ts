@@ -15,19 +15,15 @@ const userSchema = new Schema(
     },
     firstName: {
       type: String,
-      required: [true, "First name is required"],
-      minlength: [3, "First name must be at least 3 characters"],
-      maxlength: [20, "First name must be at most 20 characters"],
       trim: true,
       lowercase: true,
+      default: "No firstName provided yet",
     },
     secondName: {
       type: String,
-      required: [true, "Second name is required"],
-      minlength: [3, "Second name must be at least 3 characters"],
-      maxlength: [20, "Second name must be at most 20 characters"],
       trim: true,
       lowercase: true,
+      default: "No secondName provided yet",
     },
     email: {
       type: String,

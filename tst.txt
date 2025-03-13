@@ -177,3 +177,104 @@
 //     <NestErrors title={formik.errors.website} color='warning' />
 // )}
 // </FormMotion>
+
+
+
+   {/* First Name */}
+                {/* <FormMotion delay={0.3}>
+                    <FormInput
+                        name="firstName"
+                        label="First Name"
+                        value={formik.values.firstName}
+                        type="text"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        description="Enter your first name as it appears on official documents."
+                        placeholder="Enter Your First Name"
+                    />
+                    {formik.touched.firstName && formik.errors.firstName && (
+                        <NestErrors title={formik.errors.firstName} color='warning' />
+                    )}
+                </FormMotion> */}
+                {/* Last Name */}
+                {/* <FormMotion delay={0.4}>
+                    <FormInput
+                        name="secondName"
+                        label="Last Name"
+                        value={formik.values.secondName}
+                        type="text"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        description="Enter your last name as it appears on official documents."
+                        placeholder="Enter Your Last Name"
+                    />
+                    {formik.touched.secondName && formik.errors.secondName && (
+                        <NestErrors title={formik.errors.secondName} color='warning' />
+                    )}
+                </FormMotion> */}
+
+                  {/* Image */}
+                {/* <FormMotion delay={0.8}>
+                    <FormInput
+                        description="Upload your profile picture. This helps us to know more about you."
+                        label='Image'
+                        type='file'
+                        name='image'
+                        onBlur={formik.handleBlur}
+                        onChange={handleImageChange}
+                        placeholder="Upload Your Image"
+                        accept={true}
+                    />
+                    {uploading && (
+                        <Progress
+                            aria-label="Uploading..."
+                            className="w-full mb-3"
+                            color="success"
+                            showValueLabel={true}
+                            size="sm"
+                            value={value}
+                        />
+                    )}
+                    {formik.touched.image && formik.errors.image && (
+                        <NestErrors title={formik.errors.image} color='warning' />
+                    )}
+
+                </FormMotion> */}
+
+
+
+                    const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        setUploading(true);
+        setValue(0);
+
+        try {
+            const compressedImage = await compressImage(file);
+            if (!compressedImage) throw new Error("Failed to compress image");
+
+
+            const compressedFile = new File([compressedImage], file.name, { type: file.type });
+
+            formik.setFieldValue("image", compressedFile);
+
+            let progress = 0;
+            const uploadInterval = setInterval(() => {
+                progress += 10;
+                setValue(progress);
+
+                if (progress >= 100) {
+                    clearInterval(uploadInterval);
+                    setTimeout(() => {
+                        setUploading(false);
+                        setValue(0);
+                    }, 500);
+                }
+            }, 300);
+        } catch (error) {
+            console.error("Image upload error:");
+            AddToast("Failed to upload image. Please try again.", 5000, "danger");
+            setUploading(false);
+        }
+    };

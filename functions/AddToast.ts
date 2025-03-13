@@ -17,12 +17,12 @@ const AddToast = (
 ) => {
   addToast({
     color: "foreground",
-    variant: "flat",
+    variant: "solid",
     title,
     description,
     timeout,
     severity: type,
-    shadow: "lg",
+    shadow: "none",
     size: "sm",
     radius: "sm",
     shouldShowTimeoutProgress: true,

@@ -1,4 +1,3 @@
-import { allowedImageTypes } from "@/static/constant";
 import * as yup from "yup";
 
 export const signUpValidationSchema = yup.object({
@@ -12,24 +11,6 @@ export const signUpValidationSchema = yup.object({
       "Username can only contain letters, numbers, and underscores"
     )
     .required("Username is required"),
-
-  firstName: yup
-    .string()
-    .trim()
-    .min(3, "First name must be at least 3 characters")
-    .max(20, "First name must be at most 20 characters")
-    .matches(/^[A-Za-z]+$/, "First name can only contain letters")
-    .transform((value) => value.charAt(0).toUpperCase() + value.slice(1))
-    .required("First name is required"),
-
-  secondName: yup
-    .string()
-    .trim()
-    .min(3, "Last name must be at least 3 characters")
-    .max(20, "Last name must be at most 20 characters")
-    .matches(/^[A-Za-z]+$/, "Last name can only contain letters")
-    .transform((value) => value.charAt(0).toUpperCase() + value.slice(1))
-    .required("Last name is required"),
 
   email: yup
     .string()
@@ -48,17 +29,34 @@ export const signUpValidationSchema = yup.object({
     )
     .required("Password is required"),
 
-  image: yup
-    .mixed()
-    .test("fileType", "Only PNG, JPEG, and JPG files are allowed", (value) => {
-      if (!value) return true;
-      return value instanceof File && allowedImageTypes.includes(value.type);
-    })
-    .test("fileSize", "Image size should be less than 5MB", (value) => {
-      if (!value) return true;
-      return value instanceof File && value.size <= 5 * 1024 * 1024;
-    })
-    .optional(),
+  // firstName: yup
+  //   .string()
+  //   .trim()
+  //   .min(3, "First name must be at least 3 characters")
+  //   .max(20, "First name must be at most 20 characters")
+  //   .matches(/^[A-Za-z]+$/, "First name can only contain letters")
+  //   .transform((value) => value.charAt(0).toUpperCase() + value.slice(1))
+  //   .required("First name is required"),
+
+  // secondName: yup
+  //   .string()
+  //   .trim()
+  //   .min(3, "Last name must be at least 3 characters")
+  //   .max(20, "Last name must be at most 20 characters")
+  //   .matches(/^[A-Za-z]+$/, "Last name can only contain letters")
+  //   .transform((value) => value.charAt(0).toUpperCase() + value.slice(1))
+  //   .required("Last name is required"),
+  // image: yup
+  //   .mixed()
+  //   .test("fileType", "Only PNG, JPEG, and JPG files are allowed", (value) => {
+  //     if (!value) return true;
+  //     return value instanceof File && allowedImageTypes.includes(value.type);
+  //   })
+  //   .test("fileSize", "Image size should be less than 5MB", (value) => {
+  //     if (!value) return true;
+  //     return value instanceof File && value.size <= 5 * 1024 * 1024;
+  //   })
+  //   .optional(),
 
   // acceptTerms: yup
   //   .boolean()

@@ -1,10 +1,7 @@
 export const SignUpInitialState = {
   userName: "",
-  firstName: "",
-  secondName: "",
   email: "",
   password: "",
-  image: undefined as File | undefined,
 };
 
 export const VerifyInitialState = {
