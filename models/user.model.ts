@@ -104,6 +104,8 @@ const userSchema = new Schema(
       trim: true,
       default: "Not provided",
     },
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date },
   },
   { timestamps: true }
 );

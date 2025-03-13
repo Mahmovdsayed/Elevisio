@@ -94,6 +94,7 @@ const SignUpForm = () => {
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
                         value={formik.values.password}
+                        description="Create a strong password with at least 6 characters, including uppercase, lowercase, and numbers."
                         placeholder='Enter Your Password'
                     />
                     {formik.touched.password && formik.errors.password && (

@@ -1,19 +1,38 @@
-export const SignUpInitialState = {
+const SignUpInitialState = {
   userName: "",
   email: "",
   password: "",
 };
 
-export const VerifyInitialState = {
+const VerifyInitialState = {
   otp: "",
   email: "",
 };
 
-export const requestNewOTPInitialState = {
+const requestNewOTPInitialState = {
   email: "",
 };
 
-export const LoginInitialState = {
+const LoginInitialState = {
   email: "",
   password: "",
+};
+
+const forgotPasswordInitialState = {
+  email: "",
+};
+
+const resetPasswordInitialState = {
+  password: "",
+  confirmPassword: "",
+  token: "",
+};
+
+export {
+  SignUpInitialState,
+  VerifyInitialState,
+  requestNewOTPInitialState,
+  LoginInitialState,
+  forgotPasswordInitialState,
+  resetPasswordInitialState,
 };

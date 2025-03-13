@@ -9,10 +9,11 @@ interface IProps {
     placeholder: string
     name: string
     value: string
+    description?: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
 }
-const FormInputPassword = ({ placeholder, onBlur, onChange, value, name }: IProps) => {
+const FormInputPassword = ({ placeholder, onBlur, onChange, value, name, description }: IProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
     return <>
@@ -29,7 +30,7 @@ const FormInputPassword = ({ placeholder, onBlur, onChange, value, name }: IProp
             isRequired
             radius="md"
             size="md"
-            description="Create a strong password with at least 6 characters, including uppercase, lowercase, and numbers."
+            description={description}
             endContent={
                 <button
                     aria-label="toggle password visibility"

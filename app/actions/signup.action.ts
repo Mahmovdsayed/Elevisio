@@ -62,7 +62,6 @@ export async function signUpUser(formData: FormData) {
 
     return await successResponse("User created successfully");
   } catch (error) {
-    console.log(error);
     return await errResponse("Something went wrong");
   }
 }

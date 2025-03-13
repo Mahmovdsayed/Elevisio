@@ -49,11 +49,11 @@ export async function uploadImageToCloudinary(
 
 export async function hashPassword(password: string) {
   const saltRounds = parseInt(process.env.SALT_ROUNDS || "");
-  return await bcrypt.hash(password, saltRounds);
+  return bcrypt.hashSync(password, saltRounds);
 }
 
 export async function verifyPassword(password: string, hashedPassword: string) {
-  return await bcrypt.compare(password, hashedPassword);
+  return bcrypt.compareSync(password, hashedPassword);
 }
 
 export const errResponse = async (msg: string) => {
