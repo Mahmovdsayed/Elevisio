@@ -9,7 +9,7 @@ export async function middleware(req: any) {
   const response = NextResponse.next();
   response.headers.set(
     "Access-Control-Allow-Origin",
-    "*"
+    "https://www.elevisio.online"
   );
   response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   response.headers.set(

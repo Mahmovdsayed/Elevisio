@@ -10,12 +10,12 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    // turbo: {
-    //   minify: true,
-    //   treeShaking: true,
-    // },
+    turbo: {
+      minify: true,
+      treeShaking: true,
+    },
     serverActions: {
-      allowedOrigins: ["http://localhost:3000", "https://www.elevisio.online/"],
+      allowedOrigins: ["http://localhost:3000", "https://www.elevisio.online"],
       bodySizeLimit: "10mb",
     },
   },

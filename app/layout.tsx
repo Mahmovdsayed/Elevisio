@@ -28,7 +28,6 @@ const metadataBase = new URL(baseUrl);
 export const metadata: Metadata = {
   title: `${content.homePage.title}`,
   description: `${content.homePage.description}`,
-
   keywords: seoKeywords,
   openGraph: {
     title: `${content.homePage.title}`,
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Elevisio",
     images: [
       {
-        url: "/banner.jpg",
+        url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
         width: 1200,
         height: 630,
         alt: "Elevisio Overview"
@@ -51,7 +50,7 @@ export const metadata: Metadata = {
     description: `${content.homePage.description}`,
     images: [
       {
-        url: "/banner.jpg",
+        url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
         width: 1200,
         height: 630,
         alt: "Elevisio Overview"
