@@ -34,28 +34,27 @@ export const metadata: Metadata = {
     description: `${content.homePage.description}`,
     url: `${baseUrl}`,
     siteName: "Elevisio",
-    images: [
-      {
-        url: "/banner.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Elevisio Overview"
-      }
-    ],
+    // images:
+    //   [{
+    //     url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Elevisio Overview"
+    //   }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${content.homePage.title}`,
+    title: `Elevisio`,
     description: `${content.homePage.description}`,
-    images: [
-      {
-        url: "/banner.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Elevisio Overview"
-      }
-    ],
+    // images: [
+    //   {
+    //     url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Elevisio Overview"
+    //   }
+    // ],
   },
 };
 
@@ -66,6 +65,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="ltr" className="dark">
+      <head>
+        <meta property="og:image" content="https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg" />
+      </head>
       <body
         className={`${GetLexendDeca.variable} overflow-x-hidden antialiased`}
       >
