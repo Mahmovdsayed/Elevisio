@@ -26,11 +26,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: `${content.homePage.title}`,
+  title: `Elevisio`,
   description: `${content.homePage.description}`,
   keywords: seoKeywords,
   openGraph: {
-    title: `${content.homePage.title}`,
+    title: `Elevisio`,
     description: `${content.homePage.description}`,
     url: `${baseUrl}`,
     siteName: "Elevisio",
