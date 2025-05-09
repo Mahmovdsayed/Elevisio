@@ -23,9 +23,9 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
-const metadataBase = new URL(baseUrl);
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: `${content.homePage.title}`,
   description: `${content.homePage.description}`,
   keywords: seoKeywords,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Elevisio",
     images: [
       {
-        url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
+        url: "/banner.jpg",
         width: 1200,
         height: 630,
         alt: "Elevisio Overview"
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description: `${content.homePage.description}`,
     images: [
       {
-        url: "https://res.cloudinary.com/dtpsyi5am/image/upload/v1746778846/hlazqf5kqffq8xgtnfwy.jpg",
+        url: "/banner.jpg",
         width: 1200,
         height: 630,
         alt: "Elevisio Overview"
