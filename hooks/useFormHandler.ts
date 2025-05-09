@@ -10,7 +10,7 @@ const useFormHandler = <T extends Record<string, any>>(
     initialValues,
     validationSchema,
     validateOnBlur: true,
-    validateOnChange: false,
+    validateOnChange: true,
     onSubmit,
   });
 };

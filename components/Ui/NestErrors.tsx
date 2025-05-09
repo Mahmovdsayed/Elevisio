@@ -1,15 +1,9 @@
 'use client';
 
+import { colors } from "@/types/colors.types";
 import { Alert } from "@heroui/react";
 
-type colors =
-    | "default"
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger"
-    | undefined;
+
 
 interface IProps {
     title?: string | null;

@@ -15,15 +15,19 @@ const userSchema = new Schema(
     },
     firstName: {
       type: String,
+      required: [true, "First name is required"],
+      minlength: [3, "First name must be at least 3 characters"],
+      maxlength: [20, "First name must be at most 20 characters"],
       trim: true,
       lowercase: true,
-      default: "No firstName provided yet",
     },
-    secondName: {
+    lastName: {
       type: String,
+      required: [true, "Last name is required"],
+      minlength: [3, "Last name must be at least 3 characters"],
+      maxlength: [20, "Last name must be at most 20 characters"],
       trim: true,
       lowercase: true,
-      default: "No secondName provided yet",
     },
     email: {
       type: String,
@@ -43,19 +47,13 @@ const userSchema = new Schema(
       trim: true,
     },
     birthday: {
-      type: Date,
-      default: null,
+      type: String,
+      trim: true,
     },
     image: ImageSchema,
     about: {
       type: String,
       trim: true,
-      default: "No about provided yet",
-    },
-    bio: {
-      type: String,
-      trim: true,
-      default: "No bio available yet",
     },
     isVerified: {
       type: Boolean,
@@ -72,22 +70,18 @@ const userSchema = new Schema(
     nationality: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     country: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     city: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     positionName: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     gender: {
       type: String,
@@ -97,15 +91,18 @@ const userSchema = new Schema(
     phone: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     website: {
       type: String,
       trim: true,
-      default: "Not provided",
     },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   { timestamps: true }
 );

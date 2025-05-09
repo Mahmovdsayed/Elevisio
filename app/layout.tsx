@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lexend_Deca } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/providers/Providers";
-import { content } from "@/content/Content";
+import { content, seoKeywords } from "@/content/Content";
 import { Analytics } from "@vercel/analytics/react"
+import { baseUrl } from "@/static/constant";
 
 const GetLexendDeca = Geist({
   variable: "--font-geist-sans",
@@ -12,10 +13,51 @@ const GetLexendDeca = Geist({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
+const metadataBase = new URL(baseUrl);
 
 export const metadata: Metadata = {
   title: `${content.homePage.title}`,
   description: `${content.homePage.description}`,
+
+  keywords: seoKeywords,
+  openGraph: {
+    title: `${content.homePage.title}`,
+    description: `${content.homePage.description}`,
+    url: `${baseUrl}`,
+    siteName: "Elevisio",
+    images: [
+      {
+        url: "/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Elevisio Overview"
+      }
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${content.homePage.title}`,
+    description: `${content.homePage.description}`,
+    images: [
+      {
+        url: "/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Elevisio Overview"
+      }
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -24,9 +66,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" dir="ltr" className="dark">
       <body
-        className={`${GetLexendDeca.variable}  antialiased`}
+        className={`${GetLexendDeca.variable} overflow-x-hidden antialiased`}
       >
         <Providers>
           <Analytics />

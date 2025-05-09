@@ -1,5 +1,6 @@
 'use client'
 
+import { usePreventZoom } from "@/hooks/usePreventZoom";
 import { EyeFilledIcon } from "@/icons/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "@/icons/EyeSlashFilledIcon";
 import { Input } from "@heroui/react";
@@ -15,6 +16,8 @@ interface IProps {
 }
 const FormInputPassword = ({ placeholder, onBlur, onChange, value, name, description }: IProps) => {
     const [isVisible, setIsVisible] = useState(false);
+    usePreventZoom();
+
     const toggleVisibility = () => setIsVisible(!isVisible);
     return <>
         <Input
@@ -26,7 +29,7 @@ const FormInputPassword = ({ placeholder, onBlur, onChange, value, name, descrip
             placeholder={placeholder}
             label="Password"
             labelPlacement="inside"
-            className="mb-1"
+            className="mb-1 ios-no-zoom"
             isRequired
             radius="md"
             size="md"

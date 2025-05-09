@@ -1,4 +1,7 @@
-export const compressImage = async (file: File): Promise<Blob | null> => {
+export const compressImage = async (
+  file: File,
+  type: "banner" | "default" = "default"
+): Promise<Blob | null> => {
   return new Promise((resolve, reject) => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -8,8 +11,8 @@ export const compressImage = async (file: File): Promise<Blob | null> => {
     const objectURL = URL.createObjectURL(file);
 
     img.onload = () => {
-      const targetWidth = 500;
-      const targetHeight = 500;
+      const targetWidth = type === "banner" ? 1920 : 500;
+      const targetHeight = type === "banner" ? 1080 : 500;
       canvas.width = targetWidth;
       canvas.height = targetHeight;
 
@@ -30,12 +33,12 @@ export const compressImage = async (file: File): Promise<Blob | null> => {
           URL.revokeObjectURL(objectURL);
           resolve(blob);
         },
-        "image/webp",
-        0.8
+        file.type === "image/gif" ? "image/jpeg" : file.type,
+        1
       );
     };
 
-    img.onerror = (err) => {
+    img.onerror = () => {
       URL.revokeObjectURL(objectURL);
       reject(new Error("Failed to load image"));
     };

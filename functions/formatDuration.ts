@@ -1,3 +1,16 @@
+/**
+ * The function `getTimeSince` calculates the time elapsed since a given date and returns a formatted
+ * string indicating the duration in years, days, hours, minutes, or seconds.
+ * @param {string | Date | undefined} createdAt - The `getTimeSince` function calculates the time
+ * elapsed since a given date or timestamp. If the `createdAt` parameter is not provided or is invalid,
+ * it returns an appropriate message. The function then calculates the time difference in seconds and
+ * converts it to years, days, hours, minutes, or seconds based
+ * @returns The `getTimeSince` function returns a string indicating the time elapsed since the provided
+ * `createdAt` date. The returned string will be in the format "Member since: X
+ * [years/days/hours/minutes/seconds] ago" depending on the time difference between the `createdAt`
+ * date and the current date. If `createdAt` is not provided or is invalid, appropriate error messages
+ * are returned.
+ */
 const getTimeSince = (createdAt: string | Date | undefined) => {
   if (!createdAt) return "Member since: Unknown";
 

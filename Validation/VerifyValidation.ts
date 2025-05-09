@@ -1,3 +1,4 @@
+/* This TypeScript code snippet is defining validation schemas using the Yup library. */
 import * as yup from "yup";
 
 export const VerifyValidationSchema = yup.object({

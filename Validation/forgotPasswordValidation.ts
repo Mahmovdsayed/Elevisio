@@ -1,3 +1,6 @@
+/* This TypeScript code snippet is defining validation schemas using the Yup library. Yup is a
+JavaScript schema builder for value parsing and validation. Here's a breakdown of what the code is
+doing: */
 import * as yup from "yup";
 
 export const forgotPasswordValidationSchema = yup.object({
@@ -25,5 +28,5 @@ export const resetPasswordValidationSchema = yup.object({
     .oneOf([yup.ref("password")], "Passwords must match")
     .required("Confirm password is required"),
 
-  token: yup.string().required("Token is required"),
+  token: yup.string().optional(),
 });

@@ -1,0 +1,15 @@
+@supports (-webkit-touch-callout: none) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    transform: scale(1) !important;
+    transform-origin: left top !important;
+    touch-action: manipulation !important;
+    max-height: 100% !important;
+  }
+
+  input:focus,
+  textarea:focus {
+    zoom: 1 !important;
+  }
+}

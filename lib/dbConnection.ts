@@ -1,3 +1,5 @@
+/* This TypeScript code snippet is setting up a connection to a MongoDB database using Mongoose. Here's
+a breakdown of what each part of the code is doing: */
 "use server";
 import mongoose from "mongoose";
 

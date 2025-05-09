@@ -46,12 +46,12 @@ export async function signInUser(formData: FormData) {
       process.env.LOGIN_SIG || "",
       { expiresIn: "30d" }
     );
-    // (await cookies()).set("userToken", token, {
-    //   secure: process.env.NODE_ENV === "production",
-    //   sameSite: "strict",
-    //   path: "/",
-    //   expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-    // });
+    (await cookies()).set("userToken", token, {
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+    });
     return await successResponse(`Welcome back ${isEmailExist.userName} 👋`);
   } catch (error) {
     return await errResponse("Something went wrong");

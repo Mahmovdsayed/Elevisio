@@ -1,3 +1,7 @@
+/**
+ * The `ConfettiFireworks` function creates a fireworks animation using confetti particles that burst
+ * and spread in a random manner for a specified duration.
+ */
 import confetti from "canvas-confetti";
 
 export function ConfettiFireworks() {

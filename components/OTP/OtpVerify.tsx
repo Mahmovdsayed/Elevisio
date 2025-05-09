@@ -5,9 +5,10 @@ import { useState } from "react";
 import FormMotion from "../motion/FormMotion";
 import { MdRefresh, MdVerified } from "react-icons/md";
 import { useRouter, useSearchParams } from "next/navigation";
-import { OTPVerify, requestNewOTP } from "@/app/actions/verify.action";
+import { OTPVerify, requestNewOTP } from "@/app/actions/auth/verify.action";
 import { AddToast } from "@/functions/AddToast";
 import { ConfettiCustomShapes } from "@/functions/ConfettiCustomShapes";
+import SubmitButton from "../Ui/SubmitButton";
 
 const OtpVerify = () => {
 
@@ -63,7 +64,6 @@ const OtpVerify = () => {
         }
     }
 
-
     return <>
         <div className="mt-4 w-full text-start lg:w-9/12 lg:mx-auto">
             <form
@@ -82,28 +82,24 @@ const OtpVerify = () => {
                         onValueChange={setValue}
                     />
                 </FormMotion>
+
                 <div className="mt-4 flex flex-col md:flex-row gap-3 md:gap-4">
                     <FormMotion delay={0.5}>
-                        <Button
-                            radius="full"
-                            variant="flat"
+                        <SubmitButton
+                            title="Verify"
                             isLoading={loading}
-                            disabled={loading}
-                            className="w-full "
+                            isDisabled={loading}
                             startContent={<MdVerified />}
-                            type="submit"
-                        >
-                            Verify
-                        </Button>
+                        />
                     </FormMotion>
                     <FormMotion delay={0.6}>
                         <Button
                             radius="full"
+                            isLoading={reloading}
+                            isDisabled={reloading}
                             variant="bordered"
                             className="w-full md:bg-transparent  p-0"
                             type="button"
-                            isLoading={reloading}
-                            disabled={reloading}
                             onPress={() => resendOTP()}
                             startContent={<MdRefresh />}
                         >

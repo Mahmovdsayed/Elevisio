@@ -7,14 +7,13 @@ import FormInputPassword from "../Ui/FormInputPassword";
 import { LoginInitialState } from "@/services/InitialState";
 import { signInValidationSchema } from "@/Validation/LoginValidation";
 import NestErrors from "../Ui/NestErrors";
-import { Button } from "@heroui/react";
 import { IoLogIn } from "react-icons/io5";
-import { signInUser } from "@/app/actions/signin.action";
-import { useRouter } from "next/navigation";
-import { AddToast } from "@/functions/AddToast";
+import { signInUser } from "@/app/actions/auth/signin.action";
+import useHandleResponse from "@/hooks/useHandleResponse";
+import SubmitButton from "../Ui/SubmitButton";
 
 const LogInForm = () => {
-    const router = useRouter()
+    const handleResponse = useHandleResponse();
 
     const formik = useFormHandler(LoginInitialState, signInValidationSchema, async (values) => {
         const formData = new FormData();
@@ -24,23 +23,7 @@ const LogInForm = () => {
                 formData.append(key, value as string);
             }
         });
-        const response = await signInUser(formData);
-        if (response.success) {
-            formik.resetForm()
-            AddToast(
-                response.message,
-                5000,
-                "success",
-            );
-            router.push(`/`);
-
-        } else {
-            AddToast(
-                response.message || "Failed to Login",
-                5000,
-                "warning"
-            );
-        }
+        await handleResponse(signInUser(formData), formik.resetForm, '/dashboard')
     })
     return <>
         <div>
@@ -74,18 +57,13 @@ const LogInForm = () => {
                     )}
                 </FormMotion>
                 <FormMotion delay={0.6}>
-                    <Button
+                    <SubmitButton
+                        title='Sign In'
                         isLoading={formik.isSubmitting}
                         isDisabled={formik.isSubmitting}
-                        type="submit"
-                        radius="md"
-                        size="md"
-                        variant="flat"
                         startContent={<IoLogIn />}
-                        className="w-full"
-                    >
-                        Log in
-                    </Button>
+                    />
+
                 </FormMotion>
             </form>
         </div>

@@ -1,3 +1,7 @@
+/**
+ * The `ConfettiCustomShapes` function in TypeScript creates custom confetti shapes like triangle,
+ * square, coin, and tree, and shoots them in intervals with varying particle counts and shapes.
+ */
 import confetti from "canvas-confetti";
 
 export function ConfettiCustomShapes() {

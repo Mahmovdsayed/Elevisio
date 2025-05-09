@@ -1,52 +1,28 @@
-'use client';
-
+'use client'
 import { signUpValidationSchema } from '@/Validation/SignUpValidation';
-import { signUpUser } from '@/app/actions/signup.action';
+import { signUpUser } from '@/app/actions/auth/signup.action';
 import useFormHandler from '@/hooks/useFormHandler';
 import { SignUpInitialState } from '@/services/InitialState';
 import NestErrors from '../Ui/NestErrors';
 import FormMotion from '../motion/FormMotion';
 import FormInput from '../Ui/FormInput';
 import FormInputPassword from '../Ui/FormInputPassword';
-import { Button, Checkbox, Link, Progress } from '@heroui/react';
 import { IoLogIn } from 'react-icons/io5';
-import { AddToast } from '@/functions/AddToast';
-import { ConfettiFireworks } from '@/functions/ConfettiFireworks';
-import { useRouter } from 'next/navigation';
+import SubmitButton from '../Ui/SubmitButton';
+import useHandleResponse from '@/hooks/useHandleResponse';
 
 const SignUpForm = () => {
-    const router = useRouter()
-
+    const handleResponse = useHandleResponse();
 
     const formik = useFormHandler(SignUpInitialState, signUpValidationSchema, async (values) => {
         const formData = new FormData();
-
         Object.entries(values).forEach(([key, value]) => {
             if (value !== null && value !== undefined) {
                 formData.append(key, value as string);
             }
         });
 
-        const response = await signUpUser(formData);
-        if (response.success) {
-            formik.resetForm()
-            AddToast(
-                "User created successfully!",
-                5000,
-                "success",
-                "Please check your email to verify your account."
-            );
-            ConfettiFireworks();
-            setTimeout(() => {
-                router.push(`/verify?email=${values.email}`);
-            }, 2000);
-        } else {
-            AddToast(
-                response.message || "Failed to create user.",
-                5000,
-                "warning"
-            );
-        }
+        await handleResponse(signUpUser(formData), formik.resetForm, `/verify?email=${values.email}`)
     });
 
     return (
@@ -55,8 +31,42 @@ const SignUpForm = () => {
                 className="flex flex-col gap-2"
                 onSubmit={formik.handleSubmit}
             >
-                {/* User Name */}
-                <FormMotion delay={0.4}>
+                <div className='flex items-center justify-center gap-2'>
+                    {/* First Name */}
+                    <FormMotion delay={0.4}>
+                        <FormInput
+                            name="firstName"
+                            label="First Name"
+                            value={formik.values.firstName}
+                            type="text"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            placeholder="Enter Your First Name"
+                            description="Enter your first name as it appears on your official website."
+                        />
+                        {formik.touched.firstName && formik.errors.firstName && (
+                            <NestErrors title={formik.errors.firstName} color='warning' />
+                        )}
+                    </FormMotion>
+                    {/* Last Name */}
+                    <FormMotion delay={0.5}>
+                        <FormInput
+                            name="lastName"
+                            label="Last Name"
+                            value={formik.values.lastName}
+                            type="text"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            placeholder="Enter Your Last Name"
+                            description='Enter your last name as it appears on your official website.'
+                        />
+                        {formik.touched.lastName && formik.errors.lastName && (
+                            <NestErrors title={formik.errors.lastName} color='warning' />
+                        )}
+                    </FormMotion>
+                </div>
+                {/* userName */}
+                <FormMotion delay={0.6}>
                     <FormInput
                         name="userName"
                         label="User Name"
@@ -72,7 +82,7 @@ const SignUpForm = () => {
                     )}
                 </FormMotion>
                 {/* Email */}
-                <FormMotion delay={0.5}>
+                <FormMotion delay={0.7}>
                     <FormInput
                         name="email"
                         label="Email"
@@ -88,7 +98,7 @@ const SignUpForm = () => {
                     )}
                 </FormMotion>
                 {/* Password */}
-                <FormMotion delay={0.6}>
+                <FormMotion delay={0.8}>
                     <FormInputPassword
                         name='password'
                         onBlur={formik.handleBlur}
@@ -102,22 +112,16 @@ const SignUpForm = () => {
                     )}
                 </FormMotion>
                 {/* Submit Button */}
-                <FormMotion delay={0.7}>
-                    <Button
+                <FormMotion delay={0.9}>
+                    <SubmitButton
+                        title='Sign Up'
                         isLoading={formik.isSubmitting}
                         isDisabled={formik.isSubmitting}
-                        type="submit"
-                        radius="md"
-                        size="md"
-                        variant="flat"
                         startContent={<IoLogIn />}
-                        className="w-full">
-                        Sign Up
-                    </Button>
+                    />
                 </FormMotion>
             </form>
         </div>
-
     );
 };
 

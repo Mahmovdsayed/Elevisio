@@ -2,7 +2,6 @@
 
 import User from "@/models/user.model";
 import { connectToDatabase } from "@/lib/dbConnection";
-import sendEmailService from "@/lib/email";
 import { generateOTP, sendOTPEmail } from "@/lib/sendOTPEmail";
 import { signUpValidationSchema } from "@/Validation/SignUpValidation";
 import { errResponse, hashPassword, successResponse } from "@/Helpers/helpers";
@@ -15,6 +14,8 @@ export async function signUpUser(formData: FormData) {
       userName: formData.get("userName") as string,
       email: formData.get("email") as string,
       password: formData.get("password") as string,
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
     };
 
     try {
@@ -50,15 +51,6 @@ export async function signUpUser(formData: FormData) {
     await newUser.save();
 
     await sendOTPEmail(newUser.email, newUser.otp);
-
-    await sendEmailService({
-      to: userData.email?.toString(),
-      subject: "Welcome to Elevisio",
-      message: `
-        <h1>Welcome, ${userData.userName}!</h1>
-        <p>We're excited to have you on board. Enjoy exploring our platform!</p>
-      `,
-    });
 
     return await successResponse("User created successfully");
   } catch (error) {
