@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     const user: User = await getUserDataDashboard("/dashboard/global", "user-dashboard-data")
     return (
-        <div className={`antialiased`}>
+        <div className={`antialiased `}>
             <Providers>
                 <Header user={user} />
                 <div className="flex ">
