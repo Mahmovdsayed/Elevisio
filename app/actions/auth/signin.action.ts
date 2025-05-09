@@ -48,9 +48,10 @@ export async function signInUser(formData: FormData) {
     );
     (await cookies()).set("userToken", token, {
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "lax",
+      httpOnly: true,
       path: "/",
-      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+      maxAge: 30 * 24 * 60 * 60
     });
     return await successResponse(`Welcome back ${isEmailExist.userName} 👋`);
   } catch (error) {
