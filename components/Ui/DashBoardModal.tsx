@@ -100,14 +100,7 @@ const DashBoardModal = ({
     }
 
     return (
-        <Drawer
-            classNames={{
-                base: "z-[200]",
-                wrapper: "z-[200] h-full"
-            }}
-            {...commonProps}
-            placement="right"
-        >
+        <Drawer {...commonProps} placement="right">
             <DrawerContent>
                 <DrawerHeader className="flex flex-col gap-1">
                     {renderHeader()}
