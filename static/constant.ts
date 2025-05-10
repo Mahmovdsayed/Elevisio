@@ -25,7 +25,7 @@ const employmentType = [
   { key: "Internship", label: "Internship" },
   { key: "Freelance", label: "Freelance" },
   { key: "Remote", label: "Remote" },
-  { key: "Temporary", label: "Temporary" },
+  { key: "Temporary", label: "Temporary" }, 
   { key: "Casual", label: "Casual" },
   { key: "Volunteer", label: "Volunteer" },
   { key: "Self-Employed", label: "Self-Employed" },
