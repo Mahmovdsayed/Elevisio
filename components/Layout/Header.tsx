@@ -69,7 +69,7 @@ const Header = ({ user }: IProps) => {
                             <p className="font-semibold">Signed in as</p>
                             <p className="font-semibold">{user?.email}</p>
                         </DropdownItem>
-                        <DropdownItem key="settings">My Settings</DropdownItem>
+                        <DropdownItem isReadOnly key="settings">My Settings</DropdownItem>
                         <DropdownItem onPress={LogoutFunc} key="logout" color="danger">
                             Log Out
                         </DropdownItem>

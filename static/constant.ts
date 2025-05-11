@@ -16,7 +16,7 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 
-const baseUrl = "https://www.elevisio.online";
+const baseUrl = "https://elevisio.online";
 
 const employmentType = [
   { key: "Full-time", label: "Full-time" },
@@ -25,7 +25,7 @@ const employmentType = [
   { key: "Internship", label: "Internship" },
   { key: "Freelance", label: "Freelance" },
   { key: "Remote", label: "Remote" },
-  { key: "Temporary", label: "Temporary" }, 
+  { key: "Temporary", label: "Temporary" },
   { key: "Casual", label: "Casual" },
   { key: "Volunteer", label: "Volunteer" },
   { key: "Self-Employed", label: "Self-Employed" },
@@ -52,7 +52,7 @@ const navigationItems = [
   { name: "Shop", href: "/dashboard/shop", icon: ShoppingCartIcon },
   { name: "Notes", href: "/dashboard/notes", icon: Notebook },
   { name: "CV", href: "/dashboard/cv", icon: File },
-  { name: "Themes & Music", href: "/dashboard/themes", icon: Music },
+  // { name: "Themes & Music", href: "/dashboard/themes", icon: Music },
   { name: "Logout", href: "#", icon: LogOut },
 ];
 

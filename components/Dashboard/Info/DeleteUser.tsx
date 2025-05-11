@@ -33,8 +33,8 @@ const DeleteUser = ({ userID }: IProps) => {
             className="w-full font-medium"
             onPress={handleOpenModal}
             startContent={<FaTrash />}
-            radius="sm"
             size="sm"
+            radius="full"
         />
         <DashBoardModal
             isModal

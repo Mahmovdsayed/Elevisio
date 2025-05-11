@@ -36,7 +36,7 @@ export async function deleteUserProject(ID: string) {
 
     await Projects.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-projects");
-
+    revalidateTag("home-data");
     return await successResponse("Your Project has been deleted successfully!");
   } catch (error) {
     return await errResponse("Something went wrong");

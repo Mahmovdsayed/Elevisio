@@ -79,7 +79,7 @@ export async function addProject(formData: FormData) {
 
     await newProject.save();
     revalidateTag("user-dashboard-projects");
-
+    revalidateTag("home-data");
     return await successResponse("Project added successfully");
   } catch (error) {
     return await errResponse("Something went wrong");

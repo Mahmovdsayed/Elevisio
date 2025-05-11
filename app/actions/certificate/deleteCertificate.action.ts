@@ -33,7 +33,7 @@ export async function deleteCertificate(ID: string) {
 
     await Certificate.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-certificates");
-
+    revalidateTag("home-data");
     return await successResponse(
       "Your Certificate has been deleted successfully!"
     );

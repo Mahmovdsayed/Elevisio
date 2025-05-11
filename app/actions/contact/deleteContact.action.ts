@@ -36,8 +36,8 @@ export async function deleteContact(contactID: string, linkID: string) {
     if (!updatedContact) {
       return await errResponse("Failed to delete contact link");
     }
-
     revalidateTag("user-dashboard-contact");
+    revalidateTag("home-data");
     return await successResponse("Contact link deleted successfully!");
   } catch (error) {
     console.error("Delete contact error:", error);

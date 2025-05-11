@@ -38,6 +38,7 @@ export async function deleteEvent(ID: string) {
     }
     await Event.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-events");
+    revalidateTag("home-data");
     return await successResponse("Event deleted successfully");
   } catch (error) {
     return await errResponse("Failed to add event");

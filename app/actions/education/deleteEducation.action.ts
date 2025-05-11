@@ -37,7 +37,7 @@ export async function deleteUserEducation(ID: string) {
 
     await Education.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-education");
-
+    revalidateTag("home-data");
     return await successResponse(
       "Your Education has been deleted successfully!"
     );

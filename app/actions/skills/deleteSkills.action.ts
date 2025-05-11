@@ -27,6 +27,7 @@ export async function deleteSkill(ID: string) {
       );
 
     await Skill.findByIdAndDelete(ID);
+    revalidateTag("home-data");
     revalidateTag("user-dashboard-skills");
     return await successResponse("Skill deleted successfully");
   } catch (error) {

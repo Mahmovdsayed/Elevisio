@@ -65,7 +65,7 @@ export async function uploadCV(formData: FormData) {
     }
 
     revalidateTag("user-dashboard-cv");
-
+    revalidateTag("home-data");
     return await successResponse("Your CV has been uploaded successfully");
   } catch (error) {
     console.log(error);

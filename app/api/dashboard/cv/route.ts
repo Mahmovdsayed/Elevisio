@@ -188,6 +188,7 @@ export async function GET(request: Request) {
       message: message,
     });
   } catch (error: any) {
+    console.log(error)
     return NextResponse.json({
       success: false,
       message: "Failed to generate CV",

@@ -68,7 +68,7 @@ export async function addCertificate(formData: FormData) {
 
     await newCertificate.save();
     revalidateTag("user-dashboard-certificates");
-
+    revalidateTag("home-data");
     return await successResponse("Certificate added successfully");
   } catch (error) {
     return await errResponse("Something went wrong");

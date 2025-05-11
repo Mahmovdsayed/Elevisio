@@ -80,6 +80,7 @@ const Info = ({ data, dominantColor, textColor }: { data: User, dominantColor: s
                                 className="w-full"
                                 startContent={<FaUpload />}
                                 size="sm"
+                                radius="full"
                                 imageURL={data.image.url}
                             />
                             <UpdateUserInfo data={data} />

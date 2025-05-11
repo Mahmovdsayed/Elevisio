@@ -30,6 +30,7 @@ export async function deleteBlog(ID: string) {
     }
     await Blog.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-blogs");
+    revalidateTag("home-data");
     return await successResponse("Your Blog has been deleted successfully");
   } catch (error) {
     return await errResponse("Something went wrong");

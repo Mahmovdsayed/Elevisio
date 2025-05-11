@@ -34,11 +34,11 @@ export async function deleteCV(ID: string) {
         { userID: user.id, _id: { $ne: ID } },
         { $set: { isMainCV: true } }
       );
-    } 
+    }
 
     await CV.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-cv");
-
+    revalidateTag("home-data");
     return await successResponse("Your CV has been deleted successfully!");
   } catch (error) {
     return await errResponse("Something went wrong");

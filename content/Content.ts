@@ -88,6 +88,11 @@ export const content = {
     description:
       "Your personal workspace - only you can see these notes. Organize your thoughts, tasks, and reminders in complete privacy.",
   },
+  dashboardCVPage: {
+    title: "CV Builder",
+    description:
+      "Craft a standout CV effortlessly with our intuitive builder. Choose from professional templates, customize content, and download in various formats.",
+  },
 };
 
 export const metadata = {

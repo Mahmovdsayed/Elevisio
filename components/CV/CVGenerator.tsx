@@ -318,7 +318,7 @@ const ProfessionalCVGenerator = ({ cvData }: { cvData: any }) => {
                     })}
                 </View>
 
-                {cvData.certifications.length > 0 && (
+                {Array.isArray(cvData.certifications) && cvData.certifications.length > 0 && (
                     <View style={styles.section}>
                         <Text style={styles.sectionTitle}>Certifications</Text>
                         {cvData.certifications.map((cert: any, i: number) => (

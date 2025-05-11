@@ -133,7 +133,7 @@ export async function AddEvent(formData: FormData) {
 
     await newEvent.save();
     revalidateTag("user-dashboard-events");
-
+    revalidateTag("home-data");
     return await successResponse("Event added successfully");
   } catch (error) {
     return await errResponse("Failed to add event");

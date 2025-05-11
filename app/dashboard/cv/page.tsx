@@ -5,25 +5,43 @@ import ContainerLayout from "@/components/Layout/ContainerLayout";
 import NoContentFound from "@/components/Layout/NoContentFound";
 import Breadcrumb from "@/components/Ui/Breadcrumb";
 import TextHeader from "@/components/Ui/TextHeader";
+import { content } from "@/content/Content";
 import { getUserDataDashboard } from "@/services/services";
-
 import { TbFileCv } from "react-icons/tb";
+import { Metadata } from "next";
 
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: `${content.dashboardCVPage.title}`,
+        description: `${content.dashboardCVPage.description}`,
+        openGraph: {
+            title: `${content.dashboardCVPage.title}`,
+            description: `${content.dashboardCVPage.description}`,
+            siteName: "Elevisio"
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${content.dashboardCVPage.title}`,
+            description: `${content.dashboardCVPage.description}`,
+        },
+    };
+
+}
 const page = async () => {
     const cv = await getUserDataDashboard("dashboard/uploaded-cv", "user-dashboard-cv")
     return <>
         <ContainerLayout>
             <Breadcrumb
                 isDashboard
-                title="CV Builder"
+                title={content.dashboardCVPage.title}
                 startContent={<TbFileCv />}
             />
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between w-full">
                 <div className="lg:flex-1">
                     <TextHeader
                         isDashboard
-                        title={"CV Builder"}
-                        description={"Craft a standout CV effortlessly with our intuitive builder. Choose from professional templates, customize content, and download in various formats."}
+                        title={content.dashboardCVPage.title}
+                        description={content.dashboardCVPage.description}
                     />
                 </div>
 

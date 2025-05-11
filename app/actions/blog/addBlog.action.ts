@@ -59,6 +59,7 @@ export async function addBlog(formData: FormData) {
 
     await newBlog.save();
     revalidateTag("user-dashboard-blogs");
+    revalidateTag("home-data");
 
     return await successResponse("Blog added successfully");
   } catch (error) {

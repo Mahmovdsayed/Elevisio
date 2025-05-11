@@ -3,7 +3,7 @@
 import { authorizeUser, errResponse, successResponse } from "@/Helpers/helpers";
 import { connectToDatabase } from "@/lib/dbConnection";
 import Skill from "@/models/skills.model";
-import {skillValidationSchema} from "@/Validation/skillValidation";
+import { skillValidationSchema } from "@/Validation/skillValidation";
 import { revalidateTag } from "next/cache";
 
 export async function addSkill(formData: FormData) {
@@ -45,7 +45,7 @@ export async function addSkill(formData: FormData) {
 
     await Promise.all(savePromises);
     revalidateTag("user-dashboard-skills");
-
+    revalidateTag("home-data");
     return await successResponse("Skills added successfully");
   } catch (error) {
     return await errResponse("Something went wrong");

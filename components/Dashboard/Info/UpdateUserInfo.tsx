@@ -80,9 +80,11 @@ const UpdateUserInfo = ({ data }: IProps) => {
             <AddNewOrUpdateButton
                 title="Edit"
                 startContent={<FaEdit />}
+                size="sm"
+                radius="full"
                 className="w-full font-medium"
                 onPress={handleOpenModal}
-                color="default"
+                color="primary"
             />
             <DashBoardModal
                 submitButtonDisabled={formik.isSubmitting}

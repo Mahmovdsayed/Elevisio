@@ -76,7 +76,7 @@ export async function addNewEducation(formData: FormData) {
 
     await newEducation.save();
     revalidateTag("user-dashboard-education");
-
+    revalidateTag("home-data");
     return await successResponse("Education added successfully");
   } catch (error: any) {
     return await errResponse("Failed to add education");

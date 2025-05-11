@@ -47,7 +47,7 @@ export async function addContact(formData: FormData) {
     );
 
     revalidateTag("user-dashboard-contact");
-
+    revalidateTag("home-data");
     return await successResponse("Contact added successfully");
   } catch (error) {
     return await errResponse("Failed to add contact");

@@ -105,7 +105,7 @@ export async function addNewWork(formData: FormData) {
 
     const newWork = createNewWorkEntry(workData, user.id, imageUrl, publicId);
     await newWork.save();
-
+    revalidateTag("home-data");
     revalidateTag("user-dashboard-work");
     return await successResponse("Work added successfully");
   } catch (error) {
@@ -229,6 +229,7 @@ export async function deleteUserWork(ID: string) {
 
     await Experience.findByIdAndDelete(ID);
     revalidateTag("user-dashboard-work");
+    revalidateTag("home-data");
     return await successResponse(
       "Your work experience has been deleted successfully!"
     );
