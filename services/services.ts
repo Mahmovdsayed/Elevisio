@@ -38,7 +38,7 @@ const getUserDataDashboard = async (url: string, tag: string) => {
   const token = await userToken();
   if (!token) return null;
 
-  return unstable_cache(() => fetchUserData(token, url), [tag], {
+  return unstable_cache(() => fetchUserData(token, url), [tag, token], {
     tags: [tag],
     revalidate: 60,
   })();
