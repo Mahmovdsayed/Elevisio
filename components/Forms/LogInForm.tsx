@@ -11,6 +11,7 @@ import { IoLogIn } from "react-icons/io5";
 import { signInUser } from "@/app/actions/auth/signin.action";
 import useHandleResponse from "@/hooks/useHandleResponse";
 import SubmitButton from "../Ui/SubmitButton";
+import { Link } from "@heroui/react";
 
 const LogInForm = () => {
     const handleResponse = useHandleResponse();
@@ -63,7 +64,12 @@ const LogInForm = () => {
                         isDisabled={formik.isSubmitting}
                         startContent={<IoLogIn />}
                     />
-
+                </FormMotion>
+                <FormMotion delay={0.7}>
+                    <div className='flex items-start justify-start flex-col gap-1'>
+                        <span className='text-start text-sm'>Don't have an account ? <Link href='/signup' size='sm' showAnchorIcon>Sign Up Now</Link></span>
+                        <Link href='/forgot-password' size='sm' showAnchorIcon>Forgot password?</Link>
+                    </div>
                 </FormMotion>
             </form>
         </div>

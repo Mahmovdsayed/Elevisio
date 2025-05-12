@@ -10,6 +10,7 @@ import FormInputPassword from '../Ui/FormInputPassword';
 import { IoLogIn } from 'react-icons/io5';
 import SubmitButton from '../Ui/SubmitButton';
 import useHandleResponse from '@/hooks/useHandleResponse';
+import { Link } from '@heroui/react';
 
 const SignUpForm = () => {
     const handleResponse = useHandleResponse();
@@ -121,6 +122,11 @@ const SignUpForm = () => {
                     />
                 </FormMotion>
             </form>
+            <FormMotion delay={1}>
+                <div className='flex items-start justify-start my-3'>
+                    <span className='text-start text-sm'>Have an account already ? <Link href='/login' size='sm' showAnchorIcon>Login Now</Link></span>
+                </div>
+            </FormMotion>
         </div>
     );
 };

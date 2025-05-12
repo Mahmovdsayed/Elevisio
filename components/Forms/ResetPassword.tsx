@@ -55,7 +55,7 @@ const ResetPassword = () => {
             </FormMotion>
             <FormMotion delay={0.6}>
                 <SubmitButton
-                    title="Send"
+                    title="Reset Password"
                     isDisabled={formik.isSubmitting}
                     isLoading={formik.isSubmitting}
                     startContent={<MdLockReset />}

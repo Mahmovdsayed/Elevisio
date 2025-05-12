@@ -29,7 +29,7 @@ export async function resetPassword(pass: string, token: string) {
     user.resetPasswordExpires = undefined;
     await user.save();
 
-    return await successResponse("Password reset successful");
+    return await successResponse("Password reset successfully");
   } catch (error) {
     return await errResponse("Something went wrong");
   }

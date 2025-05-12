@@ -16,7 +16,7 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 
-const baseUrl = "https://elevisio.online";
+const baseUrl = "https://www.elevisio.online";
 
 const employmentType = [
   { key: "Full-time", label: "Full-time" },

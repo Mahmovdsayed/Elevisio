@@ -28,7 +28,7 @@ const Info = ({ data, dominantColor, textColor }: { data: User, dominantColor: s
                 // }}
                 shadow="none"
                 radius="lg"
-                className="p-2 md:p-4 bg-gray-100 dark:bg-default-50"
+                className=" md:p-4 bg-gray-100 dark:bg-default-50"
             >
                 <CardHeader>
                     <motion.div
