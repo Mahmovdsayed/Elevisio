@@ -9,6 +9,7 @@ import { connectToDatabase } from "@/lib/dbConnection";
 import User from "@/models/user.model";
 import { signInValidationSchema } from "@/Validation/LoginValidation";
 import jwt from "jsonwebtoken";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function signInUser(formData: FormData) {
@@ -54,6 +55,8 @@ export async function signInUser(formData: FormData) {
       path: "/",
       maxAge: 30 * 24 * 60 * 60,
     });
+    revalidateTag("home-data");
+
     return await successResponse(`Welcome back ${isEmailExist.userName} 👋`);
   } catch (error) {
     return await errResponse("Something went wrong");
